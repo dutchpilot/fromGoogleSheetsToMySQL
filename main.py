@@ -37,10 +37,9 @@ url = "https://docs.google.com/spreadsheets/d/{0}/export?format=csv".format(conf
 sio = io.StringIO(requests.get(url).content.decode('utf-8'), newline=None)
 googlesheet_csv = csv.reader(sio, dialect=csv.excel)
 
-rows_in_googlesheet = 0
-
 
 # Read the GoogleSheet line by line
+rows_in_googlesheet = 0
 for row in googlesheet_csv:
     rows_in_googlesheet += 1
     if rows_in_googlesheet > 1: #Skip the first row
