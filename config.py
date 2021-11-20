@@ -1,0 +1,7 @@
+USER = 'user'
+PASSWORD = 'password'
+HOST = '192.168.0.13'
+PORT = '3306'
+DATABASE = 'mydb'
+#FILE_ID = "18K76rkmkTTXGUj6sWplY-MqaCjcnwdXk_yYPhL_RRNs"
+FILE_ID = "1-8g9EIMjvAN1YQJaaAKl1JfTJ_stcQMSy_gYXIB0OMs"

@@ -5,16 +5,10 @@ import io
 from mysql.connector import connect, Error
 from datetime import datetime
 
-USER = 'user'
-PASSWORD = 'password'
-HOST = '192.168.0.13'
-PORT = '3306'
-DATABASE = 'mydb'
-#FILE_ID = "18K76rkmkTTXGUj6sWplY-MqaCjcnwdXk_yYPhL_RRNs"
-FILE_ID = "1-8g9EIMjvAN1YQJaaAKl1JfTJ_stcQMSy_gYXIB0OMs"
+import config
 
 try:
-    connection = connect(user=USER, password=PASSWORD, host=HOST, port=PORT, database=DATABASE)
+    connection = connect(user=config.USER, password=config.PASSWORD, host=config.HOST, port=config.PORT, database=config.DATABASE)
     cursor = connection.cursor()
 except Error as e:
     print('ERROR: ' + str(e))
@@ -33,7 +27,9 @@ for row in result:
 database_fields = database_fields[0:len(database_fields)-1]
 formatted_string_for_update_tmp = formatted_string_for_update_tmp[10:len(formatted_string_for_update_tmp)-1]
 
-url = "https://docs.google.com/spreadsheets/d/{0}/export?format=csv".format(FILE_ID)
+#print(result)
+
+url = "https://docs.google.com/spreadsheets/d/{0}/export?format=csv".format(config.FILE_ID)
 request_to_google_sheet = requests.get(url)
 sio = io.StringIO(request_to_google_sheet.content.decode('utf-8'), newline=None)
 reader = csv.reader(sio, dialect=csv.excel)
